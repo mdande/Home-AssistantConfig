@@ -1,0 +1,14 @@
+- platform: mjpeg
+  mjpeg_url: http://192.168.5.159:80/live/0/mjpeg.jpg
+  name: Front of House
+  username: !secret mjpeg_user
+  password: !secret mjpeg_pass
+
+- platform: usps
+  scan_interval: 5
+
+
+#- platform: generic
+#  name: Family Map
+#  still_image_url: https://maps.googleapis.com/maps/api/staticmap?size=500x500&maptype=roadmap&markers=color:blue%7Clabel:M%7C{{ states.device_tracker.micahsiphone.attributes.latitude }},{{ states.device_tracker.micahsiphone.attributes.longitude }}&markers=color:red%7Clabel:N%7C{{ states.device_tracker.noahsiphone.attributes.latitude }},{{ states.device_tracker.noahsiphone.attributes.longitude }}&markers=color:green%7Clabel:D%7C{{ states.device_tracker.david6s.attributes.latitude }},{{ states.device_tracker.david6s.attributes.longitude }}&markers=color:black%7Clabel:E%7C{{ states.device_tracker.eschwartz_ericas6.attributes.latitude }},{{ states.device_tracker.eschwartz_ericas6.attributes.longitude }}&key=AIzaSyBb2MJGviQEEGNQSZmPAp_liz9dhcxH9a4
+#  limit_refetch_to_url_change: true

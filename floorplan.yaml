@@ -1,0 +1,132 @@
+      name: Demo Floorplan
+      image: /local/custom_ui/floorplan/floorplan.svg
+      stylesheet: /local/custom_ui/floorplan/floorplan.css
+      
+      # These options are optional
+      warnings:                  # enable warnings (to find out why things might ot be working correctly)
+      #pan_zoom:                  # enable experimental panning / zooming
+      hide_app_toolbar:          # hide the application toolbar (when used as a custom panel)
+      date_format: MMM-DD-YYYY   # Date format to use in hover-over text
+      
+      last_motion_entity: sensor.template_last_motion
+      last_motion_class: last-motion
+
+      groups:
+        - name: Temperature
+          entities:
+             - sensor.kitchen_temperature
+             - sensor.dining_room_temperature
+             - sensor.family_room_temperature
+             - sensor.office_temperature
+             - sensor.noahs_room_temperature
+             - sensor.master_bedroom_temperature
+             - climate.main
+             - climate.top
+          text_template: '${entity.state ? entity.state + "°"  : "unknown"}'
+          class_template: '
+            var temp  = parseFloat(entity.state);
+            if (temp < 70)
+              return "temp-low";            
+            else if (temp < 80)
+              return "temp-medium";            
+            else 
+              return "temp-high";
+            '
+   
+        - name: Cameras
+          entities:
+            - camera.front_of_house
+
+        - name: BigGarage
+          entities:
+            - cover.dad_garage_door
+          states:
+            - state: 'open'
+              class: 'big-garage-open'
+            - state: 'closed'
+              class: 'big-garage-closed'
+
+        - name: SmallGarage
+          entities:
+            - cover.mom_garage_door
+          states:
+            - state: 'open'
+              class: 'small-garage-open'
+            - state: 'closed'
+              class: 'small-garage-closed'
+
+        - name: Doors 
+          entities:
+            - binary_sensor.front_door_opened
+            - binary_sensor.patio_door_opened
+          states:
+            - state: 'off'
+              class: 'door-closed'
+            - state: 'on'
+              class: 'door-open'
+
+        - name: Lights 
+          entities:
+            - light.front_yard
+            - switch.backyard
+            - switch.dining_room
+            - switch.top_light_load
+          states:
+            - state: 'off'
+              class: 'light-off'
+            - state: 'on'
+              class: 'light-on'
+
+        - name: Occupancy
+          entities:
+            - binary_sensor.dining_room_occupancy
+            - binary_sensor.family_room_occupancy
+            - binary_sensor.kitchen_occupancy
+            - binary_sensor.office_occupancy
+            - binary_sensor.master_bedroom_occupancy
+            - binary_sensor.noahs_room_occupancy
+          states:
+            - state: 'off'
+              class: 'occupancy-off' 
+            - state: 'on'
+              class: 'occupancy-on' 
+   
+        - name: Presence
+          entities:
+            - device_tracker.noahsiphone
+            - device_tracker.kaylasiphone
+            - device_tracker.david7
+            - device_tracker.eschwartz_ericas6
+            - device_tracker.iphone
+          states:
+            - state: 'home'
+              class: 'presence-home' 
+            - state: 'ASU Downtown'
+              class: 'presence-asudt' 
+            - state: 'ASU Tempe'
+              class: 'presence-asu' 
+            - state: 'not_home'
+              class: 'presence-nothome' 
+            - state: 'SPA'
+              class: 'presence-spa' 
+   
+        - name: Locks
+          entities:
+            - lock.lock
+#          states:
+#            - state: 'locked'
+#              class: 'lock-locked' 
+#            - state: 'unlocked'
+#              class: 'lock-unlocked'
+          image_template: '
+            var imageName = "";
+            switch (entity.state) {
+              case "locked":
+                imageName= "lock";
+                break;
+              case "unlocked":
+                imageName="unlocked";
+                break;
+            }
+            return "/local/custom_ui/floorplan/" + imageName +".svg";
+            '

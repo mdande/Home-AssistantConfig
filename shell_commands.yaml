@@ -1,0 +1,3 @@
+  restart_ha: sudo systemctl restart home-assistant
+  micah_update: 'mosquitto_pub -d -h m10.cloudmqtt.com -p 16791 -u mschwartz -P 9520459 -t owntracks/mschwartz/micahs6edge/cmd -m "{"_type":"cmd","action":"reportLocation"}"'
+  erica_update: 'mosquitto_pub -d -h m10.cloudmqtt.com -p 16791 -u eschwartz -P 9520459 -t owntracks/eschwartz/EricaS6/cmd -m "{"_type":"cmd","action":"reportLocation"}"'

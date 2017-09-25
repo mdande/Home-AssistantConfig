@@ -1,0 +1,101 @@
+sensor.speedtest_upload:
+  icon: mdi:upload
+sensor.speedtest_download:
+  icon: mdi:download
+sensor.spa_morning_commute:
+  icon: mdi:car-side
+sensor.fountain_hills_morning_commute:
+  icon: mdi:car-side
+sensor.apollo_morning_commute:
+  icon: mdi:car-side
+sensor.dark_sky_cloud_coverage:
+  friendly_name: Cloud Coverage
+  icon: mdi:cloud
+sensor.dark_sky_humidity:
+  friendly_name: Humidity
+  icon: mdi:water-percent
+sensor.dark_sky_pressure:
+  friendly_name: Barometric Pressure
+  icon: mdi:nature
+sensor.dark_sky_temperature:
+  icon: mdi:thermometer
+  friendly_name: Temperature
+sensor.dark_sky_wind_speed:
+  icon: mdi:weather-windy
+  friendly_name: Wind Speed
+sensor.dark_sky_summary:
+  friendly_name: Condition
+sensor.dark_sky_ozone:
+  friendly_name: Ozone
+sensor.dark_sky_precip_probability:
+  friendly_name: Precipitation Probability
+  icon: mdi:percent
+sensor.dark_sky_precip:
+  friendly_name: Precipitation Type
+sensor.dark_sky_precip_intensity:
+  friendly_name: Precipitation Intensity
+  icon: mdi:weather-rainy
+sensor.dark_sky_visibility:
+  friendly_name: Visibility
+sensor.dark_sky_nearest_storm_distance:
+  friendly_name: Nearest Storm Distance
+sensor.dark_sky_nearest_storm_bearing:
+  friendly_name: Nearest Storm Bearing
+  icon: mdi:compass
+sensor.dark_sky_wind_bearing:
+  friendly_name: Wind Bearing
+  icon: mdi:compass
+sensor.dark_sky_apparent_temperature:
+  friendly_name: Real Feel
+sensor.battery_iphonenoah:
+  friendly_name: Noah's iPhone Battery
+  icon: mdi:battery-70
+sensor.battery_iphonemicah:
+  friendly_name: Micahs's iPhone Battery
+  icon: mdi:battery-70
+sensor.battery_iphonedavid:
+  friendly_name: David's iPhone Battery
+  icon: mdi:battery-70
+sensor.battery_iphonekayla:
+  friendly_name: Kayla's iPhone Battery
+  icon: mdi:battery-70
+sensor.battery_iphonesusan:
+  friendly_name: Susan's iPhone Battery
+  icon: mdi:battery-70
+sensor.erica_s6_battery:
+  friendly_name: Erica's S6 Battery
+  icon: mdi:battery-70
+switch.top_light_load:
+  friendly_name: Pantry Light
+binary_sensor.dining_room_occupancy:
+  icon: mdi:run-fast
+binary_sensor.family_room_occupancy:
+  icon: mdi:run-fast
+binary_sensor.kitchen_occupancy:
+  icon: mdi:run-fast
+binary_sensor.main_occupancy:
+  icon: mdi:run-fast
+binary_sensor.master_bedroom_occupancy:
+  icon: mdi:run-fast
+binary_sensor.noahs_room_occupancy:
+  friendly_name: Noah's Room Occupancy
+  icon: mdi:run-fast
+binary_sensor.office_occupancy:
+  icon: mdi:run-fast
+binary_sensor.top_occupancy:
+  icon: mdi:run-fast
+device_tracker.iphone:
+  friendly_name: Micah's IPhone
+media_player.sony_bravia_tv:
+  icon: mdi:television
+device_tracker.micahsiphone: {}
+switch.grass_near:
+  friendly_name: zone Grass rear
+switch.grass_far:
+  friendly_name: zone Grass front
+switch.backyard_n:
+  friendly_name: zone Backyard n
+switch.backyard_s:
+  friendly_name: zone Backyard s
+switch.front_yard:
+  friendly_name: zone Frontyard

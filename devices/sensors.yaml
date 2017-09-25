@@ -1,0 +1,118 @@
+- platform: darksky
+  api_key: !secret darksky_api
+  monitored_conditions:
+    - summary
+    - nearest_storm_distance
+    - nearest_storm_bearing
+    - precip_intensity
+    - precip_probability
+    - temperature
+    - apparent_temperature
+    - wind_speed
+    - wind_bearing
+    - cloud_cover
+    - humidity
+    - visibility
+
+- platform: time_date
+  display_options:
+    - "date_time"
+
+- platform: crimereports
+  name: Neighborhood Crime
+  radius: 2400
+
+- platform: ring
+  monitored_conditions:
+    - last_ding
+    - last_motion
+
+- platform: systemmonitor
+  resources:
+    - type: disk_free
+      arg: /var/hda
+    - type: memory_free
+    - type: processor_use
+    - type: last_boot 
+
+- platform: speedtest
+  monitored_conditions:
+    - ping
+    - download
+    - upload
+
+- platform: google_travel_time
+  name: SPA Morning Commute
+  api_key: !secret google_api
+  origin : 2520 E. Bear Creek Ln  Phoenix, AZ 85024
+  destination: 16537 N 92nd Street Scottsdale, AZ 85260
+
+- platform: google_travel_time
+  name: Apollo Morning Commute
+  api_key: !secret google_api
+  origin : 2520 E. Bear Creek Ln  Phoenix, AZ 85024
+  destination: 4035 S Riverpoint Parkway Phoenix, AZ 85024 
+
+- platform: google_travel_time
+  name: Fountain Hills Morning Commute
+  api_key: !secret google_api
+  origin : 2520 E. Bear Creek Ln  Phoenix, AZ 85024
+  destination: Fountain Hills, AZ
+  
+- platform: plex
+  name: SchwartzMedia
+  host: 192.168.5.99
+  username: !secret plex_user
+  password: !secret plex_pass
+  server: SchwartzMedia
+
+- platform: mqtt
+  state_topic: "owntracks/eschwartz/EricaS6"
+  name: "Erica S6 Battery"
+  unit_of_measurement: "%"
+  value_template: "{{ value_json.batt }}"
+
+- platform: template
+  sensors:
+    battery_iphonemicah:
+      unit_of_measurement: '%'
+      value_template: >-
+          {%- if states.device_tracker.iphone.attributes.battery %}
+              {{ states.device_tracker.iphone.attributes.battery }}
+          {% else %}
+              {{ states.sensor.battery_iphonemicah.state }}
+          {%- endif %}
+    battery_iphonenoah:
+      unit_of_measurement: '%'
+      value_template: >-
+          {%- if states.device_tracker.noahsiphone.attributes.battery %}
+              {{ states.device_tracker.noahsiphone.attributes.battery }}
+          {% else %}
+              {{ states.sensor.battery_iphonenoah.state }}
+          {%- endif %}
+    battery_iphonedavid:
+      unit_of_measurement: '%'
+      value_template: >-
+          {%- if states.device_tracker.david7.attributes.battery %}
+              {{ states.device_tracker.david7.attributes.battery }}
+          {% else %}
+              {{ states.sensor.battery_iphonedavid.state }}
+          {%- endif %}
+    battery_iphonesusan:
+      unit_of_measurement: '%'
+      value_template: >-
+          {%- if states.device_tracker.susansiphone.attributes.battery %}
+              {{ states.device_tracker.susansiphone.attributes.battery }}
+          {% else %}
+              {{ states.sensor.battery_iphonesusan.state }}
+          {%- endif %}
+
+    battery_iphonekayla:
+      unit_of_measurement: '%'
+      value_template: >-
+          {%- if states.device_tracker.kaylasiphone.attributes.battery %}
+              {{ states.device_tracker.kaylasiphone.attributes.battery }}
+          {% else %}
+              {{ states.sensor.battery_iphonekayla.state }}
+          {%- endif %}
+

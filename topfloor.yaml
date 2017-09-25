@@ -1,0 +1,43 @@
+      name: Demo Floorplan
+      image: /local/custom_ui/floorplan/topfloor.svg
+      stylesheet: /local/custom_ui/floorplan/topfloor.css
+      
+      # These options are optional
+      warnings:                  # enable warnings (to find out why things might ot be working correctly)
+      #pan_zoom:                  # enable experimental panning / zooming
+      hide_app_toolbar:          # hide the application toolbar (when used as a custom panel)
+      date_format: MMM-DD-YYYY   # Date format to use in hover-over text
+      
+      last_motion_entity: sensor.template_last_motion
+      last_motion_class: last-motion
+
+      groups:
+        - name: Temperature
+          entities:
+             - sensor.office_temperature
+             - sensor.noahs_room_temperature
+             - sensor.master_bedroom_temperature
+          text_template: '${entity.state ? entity.state + "°"  : "unknown"}'
+
+ 
+        - name: Thermostats
+          entities:
+             - climate.top
+          text_template: '${entity.state ? entity.state + " " + entity.attributes.current_temperature + "°"  : "unknown"}'
+
+        - name: Cameras
+          entities:
+            - camera.front_of_house
+
+
+        - name: Occupancy
+          entities:
+            - binary_sensor.office_occupancy
+            - binary_sensor.master_bedroom_occupancy
+            - binary_sensor.noahs_room_occupancy
+          states:
+            - state: 'off'
+              class: 'occupancy-off' 
+            - state: 'on'
+              class: 'occupancy-on' 
+   

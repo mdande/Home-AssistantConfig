@@ -1,0 +1,37 @@
+- id: '1504549726237'
+  alias: automation_ambiance_on
+  trigger:
+  - entity_id: media_player.sony_bravia_tv
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - alias: service_tv_ambiance_on
+    data:
+      entity_id: light.tv_ambiance
+    service: light.turn_on
+- id: '1504550195651'
+  alias: automation_ambiance_off
+  trigger:
+  - entity_id: media_player.sony_bravia_tv
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - alias: service_tv_ambiance_off
+    data:
+      entity_id: light.tv_ambiance
+    service: light.turn_off
+- action:
+  - alias: service_notify_new_release
+    data:
+      message: There is a new Home Assistant release available
+    service: notify.ios_david_7
+  alias: update_notifications
+  condition: []
+  id: '1505361365833'
+  trigger:
+  - entity_id: updater.updater
+    platform: state

@@ -1,0 +1,195 @@
+  default_view:
+    view: yes
+    entities:
+      - group.lights
+      - group.doors
+      - group.thermostats
+      - group.occupancy
+      - camera.front_of_house
+      - media_player.sony_bravia_tv
+      - group.mediaserver
+      - group.morningcommute
+      - group.mailreceived
+
+    
+  ha_controls:
+    name: HA Controls
+    view: yes
+    entities:
+      - group.ha_status
+      - group.speedtest
+
+  environment:
+    name: Environment
+    view: yes
+    entities:
+      - group.temperatures
+      - group.outdoors
+      - group.humidity
+      - group.neighborhood
+  Family:
+    name: Family
+    view: yes
+    entities:
+      - device_tracker.david7
+      - device_tracker.eschwartz_ericas6
+      - device_tracker.iphone
+      - device_tracker.noahsiphone
+      - device_tracker.kaylasiphone
+      - device_tracker.susansiphone
+      - proximity.home
+      - camera.family_map
+      #- script.refresh_devices
+      - group.micah
+      - group.erica
+      - group.david
+      - group.noah
+      - group.kayla
+      - group.susan
+      - group.mediaserver
+
+  morningcommute:
+    name: Morning Commute
+    entities:
+     - sensor.spa_morning_commute
+     - sensor.apollo_morning_commute
+     - sensor.fountain_hills_morning_commute
+
+  humidity:
+    name: Humidity
+    entities:
+      - sensor.main_humidity
+      - sensor.top_humidity
+
+  mailreceived:
+    name: You've got Mail
+    entities:
+      - sensor.usps_mail
+      - sensor.usps_packages
+      - camera.usps_mail
+
+  temperatures:
+    name: Temperature
+    entities:
+      - sensor.office_temperature
+      - sensor.noahs_room_temperature
+      - sensor.master_bedroom_temperature
+      - sensor.dining_room_temperature
+      - sensor.family_room_temperature
+      - sensor.kitchen_temperature
+      - sensor.top_temperature
+      - sensor.main_temperature
+
+  neighborhood:
+    name: Neighborhood Stats
+    entities:
+      - sensor.neighborhood_crime
+
+  outdoors:
+    name: Weather
+    entities:
+      - sensor.dark_sky_apparent_temperature
+      - sensor.dark_sky_cloud_coverage
+      - sensor.dark_sky_dew_point
+      - sensor.dark_sky_humidity
+      - sensor.dark_sky_icon
+      - sensor.dark_sky_nearest_storm_bearing
+      - sensor.dark_sky_nearest_storm_distance
+      - sensor.dark_sky_ozone
+      - sensor.dark_sky_precip
+      - sensor.dark_sky_precip_intensity
+      - sensor.dark_sky_precip_probability
+      - sensor.dark_sky_summary
+      - sensor.dark_sky_temperature
+      - sensor.dark_sky_wind_bearing
+      - sensor.dark_sky_wind_speed
+      - sun.sun
+
+  HA_Status:
+    - sensor.cpu_use
+    - sensor.ram_free
+    - sensor.disk_free_varhda
+    - sensor.last_boot
+    #- script.restart_ha
+    
+  Speedtest:
+   - sensor.speedtest_ping
+   - sensor.speedtest_download
+   - sensor.speedtest_upload
+
+  Lights:
+    name: Lights
+    icon: mdi:lightbulb-outline
+    entities:
+      - group.interiorlights
+      - group.exteriorlights
+
+  InteriorLights:
+    name: Interior Lights
+    entities:
+     - switch.dining_room
+     - switch.top_light_load
+     - light.tv_ambiance
+     - light.lifx_office
+
+  ExteriorLights:
+    name: Exterior Lights
+    entities:
+     - switch.backyard
+     - light.front_yard
+     - light.landscape_lights
+
+  Occupancy:
+    name: Occupancy
+    entities:
+      - binary_sensor.dining_room_motion
+      - binary_sensor.dining_room_occupancy
+      - binary_sensor.family_room_occupancy
+      - binary_sensor.kitchen_occupancy
+      - binary_sensor.main_occupancy 
+      - binary_sensor.master_bedroom_occupancy
+      - binary_sensor.noahs_room_occupancy
+      - binary_sensor.office_occupancy
+      - binary_sensor.top_occupancy
+
+  Doors:
+    name: Doors
+    entities:
+      - lock.lock
+      - binary_sensor.front_door_opened
+      - binary_sensor.patio_door_opened
+      - sensor.ring_front_door_last_ding
+      - sensor.ring_front_door_last_motion
+      - cover.dad_garage_door
+      - cover.mom_garage_door
+
+  Thermostats:
+    name: Thermostats
+    entities:
+      - climate.main
+      - climate.top 
+
+  Erica:
+    - sensor.erica_s6_battery
+    - device_tracker.eschwartz_ericas6
+  Micah:
+    - sensor.battery_iphonemicah
+    - device_tracker.iphone
+  David:
+    - sensor.battery_iphonedavid
+    - device_tracker.david7
+  Noah:
+    - sensor.battery_iphonenoah
+    - device_tracker.noahsiphone
+  Kayla:
+    - sensor.battery_iphonekayla
+    - device_tracker.kaylasiphone
+  Susan:
+    - sensor.battery_iphonesusan
+    - device_tracker.susansiphone
+
+  MediaServer:
+    name: Schwartz Media Server
+    entities:
+      - sensor.schwartzmedia
+

@@ -1,0 +1,215 @@
+homeassistant:
+  name: Home
+  latitude: 33.708694
+  longitude: -112.0260771
+  elevation: 1600
+  unit_system: imperial
+  time_zone: America/Phoenix
+  customize: !include customize.yaml  
+
+http:
+  api_password: !secret http_password
+#  ssl_certificate: /home/homeassistant/letsencrypt/live/schwartzcrew.com/fullchain.pem
+#  ssl_key: /home/homeassistant/letsencrypt/live/schwartzcrew.com/privkey.pem
+  trusted_networks:
+  -  192.168.5.0/24
+  -  127.0.0.1
+
+# Track the sun
+sun:
+
+ios:
+
+# Allows you to issue voice commands from the frontend
+conversation:
+
+# Enables the frontend
+frontend:
+
+# Enables support for tracking state changes over time.
+history:
+
+# Checks for available updates
+updater:
+
+# View all events in a logbook
+logbook:
+
+# Discover some devices automatically
+discovery:
+
+wink:
+
+ring:
+  username: !secret ring_username
+  password: !secret ring_password
+
+media_player 1:
+  - platform: braviatv
+    host: 192.168.5.128
+
+media_player 2:
+  - platform: plex
+    entity_namespace: 'pms'
+
+ecobee:
+  api_key: !secret ecobee_api_key
+  hold_temp: True
+
+
+ifttt:
+  key: !secret ifttt_key
+
+
+device_tracker 2:
+  platform: icloud
+  username: !secret icloud_user
+  password: !secret icloud_pass
+  track_new_devices: yes
+
+device_tracker 3:
+  platform: owntracks
+  max_gps_accuracy: 200
+
+mqtt:
+  broker: m10.cloudmqtt.com
+  port: 26791
+  keepalive: 60
+  username: !secret mqtt_user
+  password: !secret mqtt_pass
+
+input_boolean:
+  micahhome:
+    name: Micah Home
+    initial: on
+    icon: mdi:cellphone-iphone
+  noahhome:
+    name: Noah Home
+    initial: on
+    icon: mdi:cellphone-iphone
+  davidhome:
+    name: David Home
+    initial: on
+    icon: mdi:cellphone-iphone
+  kaylahome:
+    name: Kayla Home
+    initial: on
+    icon: mdi:cellphone-iphone
+  ericahome:
+    name: Erica Home
+    initial: on
+    icon: mdi:cellphone-android
+
+### Cameras ###
+camera: !include devices/cameras.yaml
+
+###  Sensors  ###
+sensor: !include devices/sensors.yaml
+
+###  Logger  ###
+logger: 
+  default: critical
+  logs:
+    homeassistant.components: info
+
+###  Groups  ###
+group: !include groups.yaml
+
+###  Scenes  ###
+#scene: !include scenes.yaml
+
+### Scripts ###
+script: !include scripts.yaml
+
+### Shell Commands ###
+shell_command: !include shell_commands.yaml
+
+### Automation ###
+automation: !include automations.yaml
+
+config:
+
+zone 1:
+  name: Home
+  latitude: 33.708694
+  longitude: -112.0260771
+  radius: 200
+  icon: mdi:home
+
+zone 2:
+  name: Apollo
+  latitude: 33.411415
+  longitude: -112.012913
+  radius: 300
+  icon: mdi:city
+
+zone 3:
+  name: SPA
+  latitude: 33.6342516
+  longitude: -111.8840782
+  radius: 200
+  icon: mdi:school
+
+zone 4:
+  name: Grandma 
+  latitude: 33.637943
+  longitude: -111.935572
+  radius: 200
+  icon: mdi:home
+
+zone 5:
+  name: ASU Downtown 
+  latitude: 33.4538284
+  longitude: -112.0741724
+  radius: 1000
+  icon: mdi:school
+
+zone 6:
+  name: ASU Tempe
+  latitude: 33.4242399
+  longitude: -111.9302414
+  radius: 1000
+  icon: mdi:school
+
+proximity:
+  home:
+     devices:
+       - device_tracker.david7
+       - device_tracker.noahsiphone
+       - device_tracker.eschwartz_ericas6
+       - device_tracker.micahsiphone
+       - device_tracker.kaylasiphone
+     tolerance: 50 
+     unit_of_measurement: mi
+
+light:
+  - platform: lifx
+
+alexa: !include alexa.yaml
+
+panel_custom:
+  #- name: floorplan
+  #  sidebar_title: Floorplan
+  #  sidebar_icon: mdi:home
+  #  url_path: floorplan
+  #  config: !include floorplan.yaml
+#
+  - name: mainfloor
+    sidebar_title: MainFloor
+    sidebar_icon: mdi:home
+    url_path: mainfloor
+    config: !include mainfloor.yaml
+
+  - name: topfloor
+    sidebar_title: TopFloor
+    sidebar_icon: mdi:home
+    url_path: topfloor
+    config: !include topfloor.yaml
+
+switch:
+  - platform: rachio
+    access_token: !secret rachio_key
+
+usps:
+    username: !secret usps_user
+    password: !secret usps_pass

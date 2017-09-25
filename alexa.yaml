@@ -1,0 +1,72 @@
+intents:
+    WhereAreWeIntent:
+      speech:
+        type: plaintext
+        text: >
+          {%- if is_state('input_boolean.micahhome', 'on') and
+                 is_state('input_boolean.noahhome', 'on') -%}
+            You are both home, you silly
+          {%- else -%}
+            Micah is at {{ states.device_tracker.micahsiphone.state.replace('_', ' ') }}.
+            and Noah is at {{ states.device_tracker.noahsiphone.state.replace('_', ' ') }}.
+          {% endif %}
+      card:
+        type: simple
+        title: Where are We?
+        content: Ask Home Assistant about where everyone is
+    LocateIntent:
+      action:
+        - service: logbook.log
+          data_template:
+            message: The location of {{ User }} has been queried via Alexa.
+      speech:
+        type: plaintext
+        text: >
+          {%- if "mi" in User.lower()  -%}
+            Micah is at {{ states.device_tracker.micahsiphone.state.replace('_', ' ') }}.
+          {%- elif User.lower() == "noah" -%}
+            Noah is at {{ states.device_tracker.noahsiphone.state.replace('_', ' ') }}.
+          {%- elif User.lower() == "david" -%}
+            David is at {{ states.device_tracker.david6s.state.replace('_', ' ') }}.
+          {%- elif User.lower() == "erica" -%}
+            Erica is at {{ states.device_tracker.eschwartz_ericas6.state.replace('_', ' ') }}.
+          {%- elif User.lower() == "kayla" -%}
+            Kayla is at {{ states.device_tracker.kaylasiphone.state.replace('_', ' ') }}.
+          {%- else -%}
+            Could not understand who {{User}} is.
+          {%- endif -%}
+      card:
+        type: simple
+        title: Location queried
+        content: Ask Home Assistant about user location
+    HowIsTheTrafficIntent:
+      speech:
+        type: plaintext
+        text: >
+          {%- if "scottsdale" in Location.lower()  -%}
+            The fastest route to Scottsdale Prep takes about {{ states("sensor.spa_morning_commute") }} minutes.
+          {%- elif "spa" in Location.lower()  -%}
+            The fastest route to Scottsdale Prep takes about {{ states("sensor.spa_morning_commute") }} minutes.
+          {%- elif "apollo" in Location.lower() -%}
+            The fastest route to Apollo takes about {{ states("sensor.apollo_morning_commute") }} minutes.
+          {%- elif "fountain" in Location.lower()  -%}
+            The fastest route to Fountain Hills takes about {{ states("sensor.fountain_hills_morning_commute") }} minutes.
+          {%- else -%}
+            The location {{Location}} passed in is not configured, try Apollo, Scottsdale Prep, or Fountain Hills
+          {%- endif -%}
+      card:
+        type: simple
+        title: Traffic Conditions
+        content: Ask Home Assistant about current traffic conditions
+    RunScriptIntent:
+      action:
+        service: script.turn_on
+        data_template:
+          entity_id: script.{{ Script | replace(" ", "_") }}
+      speech:
+        type: plaintext
+        text: OK
+      card:
+        type: simple
+        title: Run Script
+        content: Ask Home Assistant to run Script.

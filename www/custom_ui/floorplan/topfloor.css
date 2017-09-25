@@ -1,0 +1,276 @@
+/* SVG shapes */
+
+svg, svg * {
+  vector-effect: non-scaling-stroke !important;
+  pointer-events: all !important;
+}
+
+/* Hover over */
+
+.entity:hover {
+  stroke: #03A9F4 !important;
+  stroke-width: 1px !important;
+  stroke-opacity: 1 !important;
+}
+
+/* Bootstrap succsss */
+
+.success-text {
+  fill: #3c763d !important;
+}
+
+.success-background, .success-text-background {
+  fill: #dff0d8 !important;
+  fill-opacity: 1 !important;
+  stroke: #d6e9c6 !important;
+  stroke-width: 1px !important;
+}
+
+/* Bootstrap info */
+
+.info-text {
+  fill: #31708f !important;
+}
+
+.info-background, .info-text-background {
+  fill: #d9edf7 !important;
+  fill-opacity: 1 !important;
+  stroke: #bce8f1 !important;
+  stroke-width: 1px !important;
+}
+
+/* Bootstrap warning */
+
+.warning-text {
+  fill: #8a6d3b !important;
+}
+
+.warning-background, .warning-text-background  {
+  fill: #fcf8e3 !important;
+  fill-opacity: 1 !important;
+  stroke: #faebcc !important;
+  stroke-width: 1px !important;
+}
+
+/* Bootstrap danger */
+
+.danger-text {
+  fill: #a94442 !important;
+}
+
+.danger-background, .danger-text-background {
+  fill: #f2dede !important;
+  fill-opacity: 1 !important;
+  stroke: #ebccd1 !important;
+  stroke-width: 1px !important;
+}
+
+/* Last motion entity */
+
+.last-motion {
+  stroke: #808080 !important;
+  stroke-width: 1px !important;
+  stroke-opacity: 1 !important;
+}
+
+/* Alarm Panel */
+
+.alarm-disarmed {
+  fill: #3c763d !important;
+}
+
+.alarm-armed {
+  fill: #8a6d3b !important;
+}
+
+/* Camera */
+
+.camera-idle {
+/*  fill: #B9CEF7 !important; */
+  fill: #6FAECE !important;
+}
+
+/* Light */
+
+.light-off {
+  stroke: #ffffff !important;
+  stroke-width: 1px !important;
+}
+
+.light-on {
+  stroke: #Ffff00 !important;
+  stroke-width: 1px !important;
+}
+
+/* Presence */
+
+.presence-asu {
+  fill: #ffc627 !important;
+}
+
+.presence-spa {
+  fill: #213c64 !important;
+}
+
+.presence-asudt {
+  fill: #8c1d40 !important;
+}
+
+.presence-nothome {
+  fill: #ffffff !important;
+}
+
+.presence-home {
+  fill: #a5cf35 !important;
+}
+
+/* Doorbell */
+
+.doorbell-off {
+  fill: #C3B7F4 !important;
+}
+
+.doorbell-on {
+  fill: #F8D2B9 !important;
+}
+
+/* doors */
+
+.door-closed {
+  fill: #a5cf35 !important;
+  fill-opacity: .3 !important;
+}
+
+.door-open {
+  fill: #c44b4b !important;
+  fill-opacity: .3 !important;
+}
+
+/* door locks */
+
+.lock-locked {
+  fill: #a5cf35 !important;
+}
+
+.lock-unlocked {
+  fill: #c44b4b !important;
+}
+
+
+
+@keyframes bigGarageOpen {
+   100%  {
+      transform: scale(3, 1);
+      transform-origin: right center;
+  }
+}
+
+@keyframes smallGarageOpen {
+   100%  {
+      transform: scale(1, 3);
+      transform-origin: top center;
+  }
+}
+
+@keyframes bigGarageClosed{
+   0% {
+      transform: scale(3, 1);
+      transform-origin: right center;
+      
+   }
+   100% {
+     transform: none;
+   }
+}
+
+@keyframes smallGarageClosed{
+   0% {
+      transform: scale(1, 3);
+      transform-origin: top center;
+      
+   }
+   100% {
+     transform: none;
+   }
+}
+
+/* Garage */
+
+.big-garage-closed {
+  fill: #a5cf35 !important;
+  fill-opacity: .3 !important;
+}
+
+.big-garage-open {
+  fill: #c44b4b !important;
+  fill-opacity: .3 !important;
+}
+
+.small-garage-closed {
+  fill: #a5cf35 !important;
+  fill-opacity: .3 !important;
+}
+
+.small-garage-open {
+  fill: #c44b4b !important;
+  fill-opacity: .3 !important;
+}
+
+
+.homelock {
+  stroke: #c44b4b !important;
+}
+
+/* Occupancy */
+
+.occupancy-off {
+  display: none !important;
+}
+
+.occupancy-on {
+  display: block !important;
+}
+
+/* Temperature sensor */
+
+.temp-low {
+  fill: #d9edf7 !important;
+  fill-opacity: 1 !important;
+}
+
+.temp-medium {
+  fill: #dff0d8 !important;
+  fill-opacity: 1 !important;
+}
+
+.temp-high {
+  fill: #f2dede !important;
+  fill-opacity: 1 !important;
+}
+
+/* Media player */
+
+.squeezebox-off {
+  fill: #8AA8A7 !important;
+}
+
+.squeezebox-on {
+  fill: #2baaa6 !important;
+}
+
+/* sprinklers */
+
+.sprinkler-off {
+  display: none !important;
+}
+
+.emitter-off {
+  display: none !important;
+}
+
+.sprinkler-on {
+  display: block !important;
+}
+.emitter-on {
+  display: block !important;
+}
