@@ -40,6 +40,12 @@ discovery:
 
 wink:
 
+cover:
+  - platform: myq
+    username: !secret myq_username
+    password: !secret myq_password
+    type: chamberlain
+
 ring:
   username: !secret ring_username
   password: !secret ring_password
@@ -72,11 +78,11 @@ device_tracker 3:
   max_gps_accuracy: 200
 
 mqtt:
-  broker: m10.cloudmqtt.com
-  port: 26791
-  keepalive: 60
-  username: !secret mqtt_user
-  password: !secret mqtt_pass
+#  broker: m10.cloudmqtt.com
+#  port: 26791
+#  keepalive: 60
+#  username: !secret mqtt_user
+#  password: !secret mqtt_pass
 
 input_boolean:
   micahhome:
@@ -110,7 +116,9 @@ sensor: !include devices/sensors.yaml
 logger: 
   default: critical
   logs:
-    homeassistant.components: info
+    homeassistant.components: warn
+    homeassistant.components.automation: debug
+    homeassistant.components.mqtt: debug
 
 ###  Groups  ###
 group: !include groups.yaml
@@ -173,11 +181,17 @@ zone 6:
 
 proximity:
   home:
+     ignored_zones:
+       - asu_tempe
+       - asu_downtown
+       - grandma
+       - spa
+       - apollo
      devices:
        - device_tracker.david7
        - device_tracker.noahsiphone
        - device_tracker.eschwartz_ericas6
-       - device_tracker.micahsiphone
+       - device_tracker.iphone
        - device_tracker.kaylasiphone
      tolerance: 50 
      unit_of_measurement: mi

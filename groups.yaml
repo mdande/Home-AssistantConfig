@@ -142,6 +142,7 @@
   Occupancy:
     name: Occupancy
     entities:
+      - sensor.occupancy_status
       - binary_sensor.dining_room_motion
       - binary_sensor.dining_room_occupancy
       - binary_sensor.family_room_occupancy
@@ -192,4 +193,4 @@
     name: Schwartz Media Server
     entities:
       - sensor.schwartzmedia
-
+  

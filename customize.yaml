@@ -99,3 +99,8 @@ switch.backyard_s:
   friendly_name: zone Backyard s
 switch.front_yard:
   friendly_name: zone Frontyard
+sensor.occupancy_status:
+  friendly_name: House Occupancy
+  icon: mdi:mdi:home
+device_tracker.homeassistant_dsiphone:
+  friendly_name: David 7+ OwnTracks

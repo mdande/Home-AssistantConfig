@@ -17,21 +17,21 @@
              - sensor.kitchen_temperature
              - sensor.dining_room_temperature
              - sensor.family_room_temperature
-#             - sensor.office_temperature
-#             - sensor.noahs_room_temperature
-#             - sensor.master_bedroom_temperature
           text_template: '${entity.state ? entity.state + "°"  : "unknown"}'
 
         - name: Thermostats
           entities:
              - climate.main
-#             - climate.top
-          text_template: '${entity.state ? entity.state + " " + entity.attributes.current_temperature + "°"  : "unknown"}'
+          text_template: '${entity.attributes.current_temperature ? Math.ceil(entity.attributes.current_temperature)  : "unknown"}'
+          class_template: 'return "ecobee-temp";'
 
-   
-#        - name: Cameras
-#          entities:
-#            - camera.front_of_house
+        - name: humidity
+          entities:
+            - sensor.main_humidity   
+            - sensor.dark_sky_humidity
+          text_template: '${entity.state ? Math.ceil(entity.state) : "undefined"}'
+          class_template: 'return "ecobee-humidity";'
+
 
         - name: BigGarage
           entities:
@@ -150,3 +150,41 @@
               class: 'emitter-off'
             - state: 'on'
               class: 'emitter-on'
+
+        ## Weather
+        - name: dark_sky_temp
+          entities:
+            - sensor.dark_sky_apparent_temperature
+          text_template: '${entity.state ? Math.ceil(entity.state) : "undefined"}'
+          class_template: 'return "static-temp";'
+
+        - name: Dark Sky Sensors
+          entities:
+            - sensor.dark_sky_minutely_summary
+          image_template: '
+            var imageName = "";
+            switch (entity.attributes.entity_picture) {
+              case "/static/images/darksky/weather-sunny.svg":
+                imageName = "day";
+                break;
+              case "/static/images/darksky/weather-night.svg":
+                imageName = "night";
+                break;
+              case "/static/images/darksky/weather-partlycloudy.svg":
+                imageName = "cloudy-day-1";
+                break;
+              case "/static/images/darksky/weather-cloudy.svg":
+                imageName = "cloudy-night-1";
+                break;
+              case "/static/images/darksky/weather-cloudy.svg":
+                imageName = "cloudy";
+                break;
+              case "/static/images/darksky/weather-pouring.svg":
+                imageName = "rainy-1";
+                break;
+              case "/static/images/darksky/weather-snowy.svg":
+                imageName = "snowy-1";
+                break;
+            }
+            return "/local/custom_ui/floorplan/images/weather/" + imageName + ".svg";
+      '

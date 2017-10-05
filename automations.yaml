@@ -28,10 +28,32 @@
   - alias: service_notify_new_release
     data:
       message: There is a new Home Assistant release available
+      title: Version Updated
     service: notify.ios_david_7
-  alias: update_notifications
+  alias: automation_update_notifications
   condition: []
   id: '1505361365833'
   trigger:
   - entity_id: updater.updater
     platform: state
+- action:
+  - alias: service_close_dad_garage
+    data:
+      entity_id: cover.dad_garage_door
+    service: cover.close_cover
+  - alias: service_close_mom_garage
+    data:
+      entity_id: cover.mom_garage_door
+    service: cover.close_cover
+  - alias: service_lock_front_door
+    data:
+      entity_id: lock.lock
+    service: lock.lock
+  alias: automation_EveryoneLeaves-Lockup
+  condition: []
+  id: '1507145301031'
+  trigger:
+  - entity_id: sensor.home_occupancy
+    from: 'true'
+    platform: state
+    to: 'false'
